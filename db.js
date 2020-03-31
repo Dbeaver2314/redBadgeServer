@@ -14,4 +14,17 @@ sequelize
   .then(() => console.log("database is connected"))
   .catch(err => console.log(err));
 
+user = sequelize.import("./models/user");
+favorite = sequelize.import("./models/favorite");
+booth = sequelize.import("./models/booth");
+market = sequelize.import("./models/market");
+
+favorite.belongsTo(user);
+user.hasMany(favorite);
+
+booth.belongsTo(market);
+market.hasMany(booth);
+booth.belongsTo(user);
+user.hasMany(booth);
+
 module.exports = sequelize;
