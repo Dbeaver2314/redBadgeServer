@@ -10,7 +10,9 @@ router.post("/add", (req, res) => {
     URL: req.body.URL,
     bio: req.body.bio,
     atMarket: req.body.atMarket,
-    likes: req.body.likes
+    likes: req.body.likes,
+    userId: req.user.id,
+    marketId: req.body.marketId
   };
   booth
     .create(addBooth)
@@ -23,19 +25,42 @@ router.post("/add", (req, res) => {
 });
 
 // get Booths   WAITING ON RELATIONSHIPS
-// router.get("/", (req, res) => {
-//     booth
-//       .findAll({
-//         where: { team: req.user.team }
-//       })
-//       .then(log => res.status(200).json(log))
-//       .catch(err =>
-//         res.json({
-//           error: err
-//         })
-//       );
-//   });
+router.get("/", (req, res) => {
+  booth
+    .findAll()
+    .then(log => res.status(200).json(log))
+    .catch(err =>
+      res.json({
+        error: err
+      })
+    );
+});
 
+router.get("/bymarket", (req, res) => {
+  booth
+    .findAll({
+      where: { marketId: req.body.marketId }
+    })
+    .then(log => res.status(200).json(log))
+    .catch(err =>
+      res.json({
+        error: err
+      })
+    );
+});
+
+router.get("/byvendor", (req, res) => {
+  booth
+    .findAll({
+      where: { userId: req.user.id }
+    })
+    .then(log => res.status(200).json(log))
+    .catch(err =>
+      res.json({
+        error: err
+      })
+    );
+});
 router.delete("/:id", (req, res) => {
   booth
     .destroy({
