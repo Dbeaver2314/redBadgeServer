@@ -26,4 +26,6 @@ app.use("/booth", booth);
 app.use("/market", market);
 app.use("/favorite", favorite);
 
-app.listen(3003, () => console.log("app is destroying all humans on 3003"));
+app.listen(process.env.PORT, () =>
+  console.log(`app is listening on ${process.env.PORT}`)
+);
