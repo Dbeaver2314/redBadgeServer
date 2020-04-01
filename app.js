@@ -27,5 +27,5 @@ app.use("/market", market);
 app.use("/favorite", favorite);
 
 app.listen(process.env.PORT, () =>
-  console.log(`app is listening on ${process.env.PORT}`)
+  console.log(`app is still listening on ${process.env.PORT}`)
 );
