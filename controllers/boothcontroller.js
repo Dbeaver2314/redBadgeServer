@@ -24,7 +24,7 @@ router.post("/add", (req, res) => {
     );
 });
 
-// get Booths   WAITING ON RELATIONSHIPS
+// get Booths
 router.get("/", (req, res) => {
   booth
     .findAll()
