@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
   favorite
     .findAll({
       where: { userId: req.user.id },
+      include: [{ model: booth, required: true }],
     })
     .then((log) => res.status(200).json(log))
     .catch((err) =>
