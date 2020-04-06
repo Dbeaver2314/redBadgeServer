@@ -5,7 +5,7 @@ const app = express();
 
 const sequelize = require("./db");
 
-sequelize.sync({ force: true }); //to drop tables use { force: true}
+sequelize.sync(); //to drop tables use { force: true}
 app.use(express.json());
 
 //Middleware import
