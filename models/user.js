@@ -2,26 +2,26 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("user", {
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     userType: {
       type: DataTypes.ENUM("User", "Vendor", "Admin"),
       allowNull: false,
-      defaultValue: "User"
-    }
+      defaultValue: "User",
+    },
   });
 
   return User;
